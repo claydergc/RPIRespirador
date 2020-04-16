@@ -1,30 +1,30 @@
 import RPi.GPIO as GPIO
 from time import time
 
-class Caudilimetro:
-
-    contadorPulsos = 0
-    factorConversion = 5.5
+class Caudalimetro:
 
     def __init__(self, sensor_pin):
         """docstring for ."""
         self.sensor_pin = sensor_pin
+	self.factorConversion = 5.5
+	self.contadorPulsos = 0
         GPIO.setwarnings(False)
-        #GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(sensor_pin, GPIO.IN)
-	GPIO.add_event_detect(sensor_pin, GPIO.RISING, callback = contadorPulsos)
-	tiempoAnterior = time.time()
+	GPIO.add_event_detect(sensor_pin, GPIO.FALLING, callback = self.contadorPulsosCallback)
+	self.tiempoAnterior = time()
 
-    def contadorPulsos(self,channel):
-	global contadorPulsos
-	start = time.time()
-	contadorPulsos += 1
-	    
+    def contadorPulsosCallback(self,channel):
+	self.contadorPulsos += 1
+
     #debe estar corriendo constantemente
-    def getCaudal(self):	
-	start = time.time()
-	caudal = -1
-	if( time.time() - tiempoAnterior > 1):
-	    tiempoAnterior = time.time()
-	    caudal = contadorPulsos/factorConversion
-	return caudal
+    def getCaudal(self):
+
+	self.caudal = -1.0
+	if( time() - self.tiempoAnterior > 1):
+	    self.tiempoAnterior = time()
+	    self.caudal = self.contadorPulsos/self.factorConversion
+	return self.caudal
+
+    def resetContadorPulsos(self):
+	self.contadorPulsos = 0
