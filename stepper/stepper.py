@@ -8,7 +8,7 @@ class StepperMotor:
         self.step_pin = step_pin
         self.dir_pin = dir_pin
         GPIO.setwarnings(False)
-        #GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(enable_pin, GPIO.OUT)
         GPIO.setup(step_pin, GPIO.OUT)
         GPIO.setup(dir_pin, GPIO.OUT)
@@ -39,7 +39,7 @@ class StepperMotor:
             GPIO.output(self.step_pin, GPIO.LOW)
             sleep(self.delay)
 
-    def direccionRotacion(theta):
+    def direccionRotacion(self, theta):
 	if theta > 0:
 	   return 1
 	else

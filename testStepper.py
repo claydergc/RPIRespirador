@@ -3,8 +3,8 @@ from time import sleep
 
 # GPIO setup
 enable_pin = 12
-#step_pin = 23
-#dir_pin = 24
+step_pin = 26
+dir_pin = 24
 mode_pins = (13, 15, 18)
 
 # Stepper motor setup
