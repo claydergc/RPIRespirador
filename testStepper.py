@@ -14,8 +14,8 @@ fullstep_delay = .005
 # create object
 motor = StepperMotor(enable_pin, step_pin, dir_pin, mode_pins, step_type, fullstep_delay)
 
-theta0 = 1.8 #angulo a mover en el motor
-f= open("data.txt","r+") #abrir archivo para lectura y escritura
+theta0 = 90 #angulo a mover en el motor
+f= open("./data.txt","r+") #abrir archivo para lectura y escritura
 
 
 #motor.enable(True)        # enables stepper driver
@@ -24,7 +24,11 @@ f= open("data.txt","r+") #abrir archivo para lectura y escritura
 #motor.run(6400, False)    # run motor 6400 steps counterclockwise
 #motor.enable(False)       # disable stepper driver
 
+motor.enable(True)
 theta1 = motor.girar(theta0) # angulo al que se llega si el numero de pasos calculados no es entero
-f.write("%d\n" % theta1) #se guarda el angulo en el arhivo data.txt
+sleep(0.5)
+motor.enable(False)
+f.write("%f\n" % theta1) #se guarda el angulo en el arhivo data.txt
+
 
 f.close() 
