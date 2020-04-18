@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
 
         MainWindow.setCentralWidget(self.centralwidget)
         MainWindow.setWindowState(QtCore.Qt.WindowMaximized)
-        MainWindow.showFullScreen()
+        #MainWindow.showFullScreen()
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

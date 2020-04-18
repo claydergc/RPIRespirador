@@ -3,13 +3,13 @@ import matplotlib.animation as animation
 from sensores.ecg import ECG
 
 # Parameters
-x_len = 200         # Number of points to display
-y_range = [10, 40]  # Range of possible Y values to display
+x_len = 100         # Number of points to display
+y_range = [0, 4]  # Range of possible Y values to display
 
 # Create figure for plotting
 fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
-xs = list(range(0, 200))
+xs = list(range(0, x_len))
 ys = [0] * x_len
 ax.set_ylim(y_range)
 
@@ -28,7 +28,7 @@ plt.ylabel('Voltaje (V)')
 def animate(i, ys):
 
     # Read temperature (Celsius) from TMP102
-    voltajeECG = round(ecg.getVoltage(), 2)
+    voltajeECG = round(ecg.getVoltage(), 5)
 
     # Add y to list
     ys.append(voltajeECG)
@@ -45,6 +45,6 @@ def animate(i, ys):
 ani = animation.FuncAnimation(fig,
     animate,
     fargs=(ys,),
-    interval=50,
+    interval=40,
     blit=True)
 plt.show()
