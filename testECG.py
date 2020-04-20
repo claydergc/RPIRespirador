@@ -3,7 +3,7 @@ import matplotlib.animation as animation
 from sensores.ecg import ECG
 
 # Parameters
-x_len = 100         # Number of points to display
+x_len = 800         # Number of points to display
 y_range = [0, 4]  # Range of possible Y values to display
 
 # Create figure for plotting
@@ -45,6 +45,6 @@ def animate(i, ys):
 ani = animation.FuncAnimation(fig,
     animate,
     fargs=(ys,),
-    interval=40,
+    interval=20,
     blit=True)
 plt.show()
