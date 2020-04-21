@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Principal</class>
+ <widget class="QWidget" name="Principal">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>960</width>
-    <height>600</height>
+    <width>1324</width>
+    <height>707</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,23 +32,57 @@
       <number>50</number>
      </property>
      <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="btnAjustes">
+       <property name="font">
+        <font>
+         <pointsize>36</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Ajustes</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="btnVentAsistida">
+       <property name="font">
+        <font>
+         <pointsize>36</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Ventilación Asistida</string>
        </property>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btnVentControlada">
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>36</pointsize>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
        <property name="text">
         <string>Ventilación Controlada</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
        </property>
       </widget>
      </item>

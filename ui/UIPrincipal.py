@@ -8,44 +8,57 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(960, 600)
-        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+class Ui_Principal(object):
+    def setupUi(self, Principal):
+        Principal.setObjectName("Principal")
+        Principal.resize(1324, 707)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Principal)
         self.verticalLayout.setObjectName("verticalLayout")
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setContentsMargins(400, 200, 400, 200)
         self.gridLayout.setVerticalSpacing(50)
         self.gridLayout.setObjectName("gridLayout")
-        self.pushButton_3 = QtWidgets.QPushButton(Form)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.gridLayout.addWidget(self.pushButton_3, 2, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(Form)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout.addWidget(self.pushButton_2, 1, 0, 1, 1)
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 0, 0, 1, 1)
+        self.btnAjustes = QtWidgets.QPushButton(Principal)
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        self.btnAjustes.setFont(font)
+        self.btnAjustes.setObjectName("btnAjustes")
+        self.gridLayout.addWidget(self.btnAjustes, 2, 0, 1, 1)
+        self.btnVentAsistida = QtWidgets.QPushButton(Principal)
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        self.btnVentAsistida.setFont(font)
+        self.btnVentAsistida.setObjectName("btnVentAsistida")
+        self.gridLayout.addWidget(self.btnVentAsistida, 1, 0, 1, 1)
+        self.btnVentControlada = QtWidgets.QPushButton(Principal)
+        self.btnVentControlada.setSizeIncrement(QtCore.QSize(0, 0))
+        self.btnVentControlada.setBaseSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setPointSize(36)
+        font.setStrikeOut(False)
+        self.btnVentControlada.setFont(font)
+        self.btnVentControlada.setIconSize(QtCore.QSize(16, 16))
+        self.btnVentControlada.setObjectName("btnVentControlada")
+        self.gridLayout.addWidget(self.btnVentControlada, 0, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Principal)
+        QtCore.QMetaObject.connectSlotsByName(Principal)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, Principal):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton_3.setText(_translate("Form", "Ajustes"))
-        self.pushButton_2.setText(_translate("Form", "Ventilación Asistida"))
-        self.pushButton.setText(_translate("Form", "Ventilación Controlada"))
+        Principal.setWindowTitle(_translate("Principal", "Form"))
+        self.btnAjustes.setText(_translate("Principal", "Ajustes"))
+        self.btnVentAsistida.setText(_translate("Principal", "Ventilación Asistida"))
+        self.btnVentControlada.setText(_translate("Principal", "Ventilación Controlada"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    Principal = QtWidgets.QWidget()
+    ui = Ui_Principal()
+    ui.setupUi(Principal)
+    Principal.show()
     sys.exit(app.exec_())
 
