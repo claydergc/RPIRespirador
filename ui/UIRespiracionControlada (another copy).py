@@ -11,13 +11,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_RespiracionControlada(object):
     def setupUi(self, RespiracionControlada):
         RespiracionControlada.setObjectName("RespiracionControlada")
-        RespiracionControlada.resize(800, 480)
+        RespiracionControlada.resize(1078, 668)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(RespiracionControlada)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.gridLayout_2 = QtWidgets.QGridLayout()
-        self.gridLayout_2.setContentsMargins(5, 50, 5, 50)
+        self.gridLayout_2.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_2.setVerticalSpacing(50)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.lblFrecRespiratoria = QtWidgets.QLabel(RespiracionControlada)
@@ -33,12 +33,6 @@ class Ui_RespiracionControlada(object):
         self.gridLayout_2.addWidget(self.lblFrecRespiratoria, 0, 0, 1, 1)
         self.gridLayout_3 = QtWidgets.QGridLayout()
         self.gridLayout_3.setObjectName("gridLayout_3")
-        
-	
-        #self.sldFrecRespiratoria = QtWidgets.QSlider(RespiracionControlada)
-        #self.sldFrecRespiratoria.setOrientation(QtCore.Qt.Vertical)
-        #self.sldFrecRespiratoria.setObjectName("sldFrecRespiratoria")
-        
 
         self.sldFrecRespiratoria = QtWidgets.QSlider(RespiracionControlada)
         self.sldFrecRespiratoria.setOrientation(QtCore.Qt.Vertical)
@@ -48,8 +42,8 @@ class Ui_RespiracionControlada(object):
         self.sldFrecRespiratoria.setValue(8)        
         self.sldFrecRespiratoria.setTickInterval(5)
         self.sldFrecRespiratoria.valueChanged.connect(self.sldFrecRespiratoriaValueChanged)
-        self.gridLayout_3.addWidget(self.sldFrecRespiratoria, 1, 0, 1, 1)
         
+        self.gridLayout_3.addWidget(self.sldFrecRespiratoria, 1, 0, 1, 1)
         self.label_3 = QtWidgets.QLabel(RespiracionControlada)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -82,7 +76,7 @@ class Ui_RespiracionControlada(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.gridLayout_4 = QtWidgets.QGridLayout()
-        self.gridLayout_4.setContentsMargins(5, 50, 5, 50)
+        self.gridLayout_4.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_4.setVerticalSpacing(50)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.lblVolumenTidal = QtWidgets.QLabel(RespiracionControlada)
@@ -99,11 +93,6 @@ class Ui_RespiracionControlada(object):
         self.gridLayout_7 = QtWidgets.QGridLayout()
         self.gridLayout_7.setObjectName("gridLayout_7")
 
-
-        #self.sldVolumenTidal = QtWidgets.QSlider(RespiracionControlada)
-        #self.sldVolumenTidal.setOrientation(QtCore.Qt.Vertical)
-        #self.sldVolumenTidal.setObjectName("sldVolumenTidal")
-        #self.gridLayout_7.addWidget(self.sldVolumenTidal, 1, 0, 1, 1)
         self.sldVolumenTidal = QtWidgets.QSlider(RespiracionControlada)
         self.sldVolumenTidal.setOrientation(QtCore.Qt.Vertical)
         self.sldVolumenTidal.setObjectName("sldVolumenTidal")
@@ -113,7 +102,7 @@ class Ui_RespiracionControlada(object):
         self.sldVolumenTidal.setTickInterval(5)
         self.sldVolumenTidal.valueChanged.connect(self.sldVolumenTidalValueChanged)
         self.gridLayout_7.addWidget(self.sldVolumenTidal, 1, 0, 1, 1)
-        
+
         self.label_7 = QtWidgets.QLabel(RespiracionControlada)
         self.label_7.setText("")
         self.label_7.setObjectName("label_7")
@@ -141,7 +130,7 @@ class Ui_RespiracionControlada(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.gridLayout_8 = QtWidgets.QGridLayout()
-        self.gridLayout_8.setContentsMargins(5, 50, 5, 50)
+        self.gridLayout_8.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_8.setVerticalSpacing(50)
         self.gridLayout_8.setObjectName("gridLayout_8")
         self.lblRelacionIE = QtWidgets.QLabel(RespiracionControlada)
@@ -172,12 +161,7 @@ class Ui_RespiracionControlada(object):
         self.label_10.setFont(font)
         self.label_10.setObjectName("label_10")
         self.gridLayout_9.addWidget(self.label_10, 0, 1, 1, 1)
-
-
-        #self.sldRelacionIE = QtWidgets.QSlider(RespiracionControlada)
-        #self.sldRelacionIE.setOrientation(QtCore.Qt.Vertical)
-        #self.sldRelacionIE.setObjectName("sldRelacionIE")
-        #self.gridLayout_9.addWidget(self.sldRelacionIE, 1, 0, 1, 1)
+        
         self.sldRelacionIE = QtWidgets.QSlider(RespiracionControlada)
         self.sldRelacionIE.setOrientation(QtCore.Qt.Vertical)
         self.sldRelacionIE.setObjectName("sldRelacionIE")
@@ -200,7 +184,7 @@ class Ui_RespiracionControlada(object):
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.gridLayout_10 = QtWidgets.QGridLayout()
-        self.gridLayout_10.setContentsMargins(5, 50, 5, 50)
+        self.gridLayout_10.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_10.setVerticalSpacing(50)
         self.gridLayout_10.setObjectName("gridLayout_10")
         self.lblSensibilidad = QtWidgets.QLabel(RespiracionControlada)
@@ -221,10 +205,6 @@ class Ui_RespiracionControlada(object):
         self.label_15.setObjectName("label_15")
         self.gridLayout_11.addWidget(self.label_15, 1, 1, 1, 1)
         
-        #self.sldSensibilidad = QtWidgets.QSlider(RespiracionControlada)
-        #self.sldSensibilidad.setOrientation(QtCore.Qt.Vertical)
-        #self.sldSensibilidad.setObjectName("sldSensibilidad")
-        #self.gridLayout_11.addWidget(self.sldSensibilidad, 1, 0, 1, 1)
         self.sldSensibilidad = QtWidgets.QSlider(RespiracionControlada)
         self.sldSensibilidad.setOrientation(QtCore.Qt.Vertical)
         self.sldSensibilidad.setObjectName("sldSensibilidad")
@@ -258,7 +238,7 @@ class Ui_RespiracionControlada(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.gridLayout_12 = QtWidgets.QGridLayout()
-        self.gridLayout_12.setContentsMargins(5, 50, 5, 50)
+        self.gridLayout_12.setContentsMargins(25, 50, 25, 50)
         self.gridLayout_12.setVerticalSpacing(50)
         self.gridLayout_12.setObjectName("gridLayout_12")
         self.lblOxigeno = QtWidgets.QLabel(RespiracionControlada)
@@ -290,10 +270,6 @@ class Ui_RespiracionControlada(object):
         self.label_19.setObjectName("label_19")
         self.gridLayout_13.addWidget(self.label_19, 1, 1, 1, 1)
         
-        #self.sldOxigeno = QtWidgets.QSlider(RespiracionControlada)
-        #self.sldOxigeno.setOrientation(QtCore.Qt.Vertical)
-        #self.sldOxigeno.setObjectName("sldOxigeno")
-        #self.gridLayout_13.addWidget(self.sldOxigeno, 1, 0, 1, 1)
         self.sldOxigeno = QtWidgets.QSlider(RespiracionControlada)
         self.sldOxigeno.setOrientation(QtCore.Qt.Vertical)
         self.sldOxigeno.setObjectName("sldOxigeno")
@@ -320,37 +296,36 @@ class Ui_RespiracionControlada(object):
     def retranslateUi(self, RespiracionControlada):
         _translate = QtCore.QCoreApplication.translate
         RespiracionControlada.setWindowTitle(_translate("RespiracionControlada", "Form"))
-        self.lblFrecRespiratoria.setText(_translate("RespiracionControlada", "Frec. Resp.:   "))
+        self.lblFrecRespiratoria.setText(_translate("RespiracionControlada", "Frec. Respiratoria:   "))
         self.label_2.setText(_translate("RespiracionControlada", "8 vpm"))
         self.label_4.setText(_translate("RespiracionControlada", "40 vpm"))
-        self.lblVolumenTidal.setText(_translate("RespiracionControlada", "Vol. Tidal:   "))
+        self.lblVolumenTidal.setText(_translate("RespiracionControlada", "Volumen Tidal:   "))
         self.label_6.setText(_translate("RespiracionControlada", "800 ml"))
         self.label_8.setText(_translate("RespiracionControlada", "200 ml"))
-        self.lblRelacionIE.setText(_translate("RespiracionControlada", "Rel. I/E:   "))
+        self.lblRelacionIE.setText(_translate("RespiracionControlada", "Relación I/E:   "))
         self.label_10.setText(_translate("RespiracionControlada", "1:4"))
         self.label_12.setText(_translate("RespiracionControlada", "1:1"))
-        self.lblSensibilidad.setText(_translate("RespiracionControlada", "Sens.:   "))
+        self.lblSensibilidad.setText(_translate("RespiracionControlada", "Sensibilidad:   "))
         self.label_14.setText(_translate("RespiracionControlada", "5 cm"))
         self.label_16.setText(_translate("RespiracionControlada", "1 cm"))
-        self.lblOxigeno.setText(_translate("RespiracionControlada", "% Oxi.:   "))
+        self.lblOxigeno.setText(_translate("RespiracionControlada", "% Oxigeno:   "))
         self.label_18.setText(_translate("RespiracionControlada", "100 %"))
         self.label_20.setText(_translate("RespiracionControlada", "0 %"))
 
     def sldFrecRespiratoriaValueChanged(self):
-    	self.lblFrecRespiratoria.setText( "Frec. Resp.: " + str(self.sldFrecRespiratoria.value()) )
+    	self.lblFrecRespiratoria.setText( "Frec. Respiratoria: " + str(self.sldFrecRespiratoria.value()) )
 
     def sldVolumenTidalValueChanged(self):
-    	self.lblVolumenTidal.setText( "Vol. Tidal: " + str(self.sldVolumenTidal.value()) )
+    	self.lblVolumenTidal.setText( "Volumen Tidal: " + str(self.sldVolumenTidal.value()) )
 
     def sldRelacionIEValueChanged(self):
-    	self.lblRelacionIE.setText( "Rel. I/E: 1:" + str(self.sldRelacionIE.value()) )
+    	self.lblRelacionIE.setText( "Relacion I/E: 1:" + str(self.sldRelacionIE.value()) )
 
     def sldSensibilidadValueChanged(self):
-    	self.lblSensibilidad.setText( "Sens.: " + str(self.sldSensibilidad.value()) )
+    	self.lblSensibilidad.setText( "Sensibilidad: " + str(self.sldSensibilidad.value()) )
 
     def sldOxigenoValueChanged(self):
-    	self.lblOxigeno.setText( "Oxi: " + str(self.sldOxigeno.value()) ) 
-
+    	self.lblOxigeno.setText( "Oxigeno: " + str(self.sldOxigeno.value()) ) 
 
 if __name__ == "__main__":
     import sys
