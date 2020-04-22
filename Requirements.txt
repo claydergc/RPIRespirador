@@ -1,0 +1,11 @@
+
+PyQT5
+sudo apt-get install python3-pyqt5  
+
+Adafruit_CircuitPython_ADS1x15 -> ECG
+sudo pip3 install adafruit-circuitpython-ads1x15
+
+Adafruit_CircuitPython_BMP280 -> SENSOR PRESION
+pip3 install adafruit-circuitpython-bmp280
+
+MAX3010 -> Arduino
