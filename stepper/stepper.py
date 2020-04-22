@@ -2,14 +2,12 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 class StepperMotor:
-    def __init__(self, enable_pin, step_pin, dir_pin, mode_pins, step_type, fullstep_delay):
+    def __init__(self, step_pin, dir_pin, mode_pins, step_type):
         """docstring for ."""
-        self.enable_pin = enable_pin
         self.step_pin = step_pin
         self.dir_pin = dir_pin
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(enable_pin, GPIO.OUT)
         GPIO.setup(step_pin, GPIO.OUT)
         GPIO.setup(dir_pin, GPIO.OUT)
         GPIO.setup(mode_pins, GPIO.OUT)
@@ -28,9 +26,6 @@ class StepperMotor:
         self.delay = .005/microsteps[step_type]
         GPIO.output(mode_pins, resolution[step_type])
 
-    def enable(self, enable):
-        GPIO.output(self.enable_pin, not enable)
-
     def run(self, steps, clockwise):
         GPIO.output(self.dir_pin, clockwise)
         for i in range(steps):
@@ -45,7 +40,7 @@ class StepperMotor:
 	else:
 	   return 0
 
-    #1 micropaso = 0.05625 grados
+    #1 micropaso 1/32 = 0.05625 grados. 1.8/32
     def girar(self, theta): #resolucion del motor
 	#GPIO.output(self.dir_pin, self.direccionRotacion(theta))
 	pasos = round(theta/0.05625, 0)
