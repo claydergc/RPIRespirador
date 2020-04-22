@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1324</width>
-    <height>707</height>
+    <width>800</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,25 +17,25 @@
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <property name="leftMargin">
-      <number>400</number>
+      <number>200</number>
      </property>
      <property name="topMargin">
-      <number>200</number>
+      <number>50</number>
      </property>
      <property name="rightMargin">
-      <number>400</number>
-     </property>
-     <property name="bottomMargin">
       <number>200</number>
      </property>
-     <property name="verticalSpacing">
+     <property name="bottomMargin">
       <number>50</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>10</number>
      </property>
      <item row="2" column="0">
       <widget class="QPushButton" name="btnAjustes">
        <property name="font">
         <font>
-         <pointsize>36</pointsize>
+         <pointsize>24</pointsize>
         </font>
        </property>
        <property name="text">
@@ -47,7 +47,7 @@
       <widget class="QPushButton" name="btnVentAsistida">
        <property name="font">
         <font>
-         <pointsize>36</pointsize>
+         <pointsize>24</pointsize>
         </font>
        </property>
        <property name="text">
@@ -71,7 +71,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>36</pointsize>
+         <pointsize>24</pointsize>
          <strikeout>false</strikeout>
         </font>
        </property>
