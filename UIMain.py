@@ -7,11 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ui.UIPrincipal import *
+from ui.UIRespiracionControlada import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 480)
+        MainWindow.resize(800, 420)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -30,23 +32,22 @@ class Ui_MainWindow(object):
         self.form.setSizePolicy(sizePolicy)
         self.verticalLayout.addWidget(self.form)
         #objeto de clase Ui_Principal
-	
-	#objeto de clase Ui_RespiracionControlada
+
+        #objeto de clase Ui_RespiracionControlada
         self.form2 = QtWidgets.QWidget()
         self.uiRespiracionControlada = Ui_RespiracionControlada()
         self.uiRespiracionControlada.setupUi(self.form2)
 	#objeto de clase Ui_RespiracionControlada
 
 
-        #self.widget = QtWidgets.QWidget(self.centralwidget)
-        #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        #sizePolicy.setHorizontalStretch(0)
-        #sizePolicy.setVerticalStretch(0)
-        #sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        #self.widget.setSizePolicy(sizePolicy)
-        #self.widget.setObjectName("widget")
-        #self.verticalLayout.addWidget(self.widget)
-        
+        self.widget = QtWidgets.QWidget(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
+        self.widget.setSizePolicy(sizePolicy)
+        self.widget.setObjectName("widget")
+        self.verticalLayout.addWidget(self.widget)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -60,7 +61,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.btnContinuar.sizePolicy().hasHeightForWidth())
         self.btnContinuar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setPointSize(28)
+        font.setPointSize(18)
         self.btnContinuar.setFont(font)
         self.btnContinuar.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.btnContinuar.setObjectName("btnContinuar")
@@ -72,7 +73,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.btnRegresar.sizePolicy().hasHeightForWidth())
         self.btnRegresar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setPointSize(28)
+        font.setPointSize(18)
         self.btnRegresar.setFont(font)
         self.btnRegresar.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.btnRegresar.setObjectName("btnRegresar")
@@ -118,6 +119,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.form)
         #self.horizontalLayout.addWidget(self.Form, self.Form2)
         #objeto de clase Ui_Principal
+
 
 
 if __name__ == "__main__":
