@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui.UIPrincipal import *
 from ui.UIRespiracionControlada import *
+from ui.UIRespiracionAsistida import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -38,6 +39,12 @@ class Ui_MainWindow(object):
         self.uiRespiracionControlada = Ui_RespiracionControlada()
         self.uiRespiracionControlada.setupUi(self.form2)
 	#objeto de clase Ui_RespiracionControlada
+
+        #objeto de clase Ui_RespiracionAsistida
+        self.form3 = QtWidgets.QWidget()
+        self.uiRespiracionAsistida = Ui_RespiracionAsistida()
+        self.uiRespiracionAsistida.setupUi(self.form3)
+	#objeto de clase Ui_RespiracionAsistida
 
 
         #self.widget = QtWidgets.QWidget(self.centralwidget)
@@ -86,6 +93,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.uiPrincipal.btnVentControlada.clicked.connect(self.gotoUIRespiracionControlada)
+        self.uiPrincipal.btnVentAsistida.clicked.connect(self.gotoUIRespiracionAsistida)
         self.btnRegresar.clicked.connect(self.gotoUIPrincipal)
 
     def retranslateUi(self, MainWindow):
@@ -108,11 +116,28 @@ class Ui_MainWindow(object):
         #self.horizontalLayout.addWidget(self.Form, self.Form2)
         #objeto de clase Ui_Principal
 
+    def gotoUIRespiracionAsistida(self):
+        #self.uiPrincipal.pushButton.setText("Acabas de hacer clic en el boton!")
+        self.verticalLayout.removeWidget(self.form)
+        self.verticalLayout.update()
+        self.form.setParent(None)
+	#objeto de clase Ui_Principal
+        #self.form2 = QtWidgets.QWidget()
+        #self.uiRespiracionControlada = Ui_RespiracionControlada()
+        #self.uiRespiracionControlada.setupUi(self.form2)
+        #self.form2.setParent(self)        
+        self.verticalLayout.addWidget(self.form3)
+        #self.horizontalLayout.addWidget(self.Form, self.Form2)
+        #objeto de clase Ui_Principal
+
     def gotoUIPrincipal(self):
         #self.uiPrincipal.pushButton.setText("Acabas de hacer clic en el boton!")
         self.verticalLayout.removeWidget(self.form2)
-        self.verticalLayout.update()
+        #self.verticalLayout.update()
         self.form2.setParent(None)
+        self.verticalLayout.removeWidget(self.form3)
+        #self.verticalLayout.update()
+        self.form3.setParent(None)
 	#objeto de clase Ui_Principal
         #self.form = QtWidgets.QWidget()
         #self.uiPrincipal = Ui_Principal()
