@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from ui.UIPrincipal import *
 from ui.UIRespiracionControlada import *
 from ui.UIRespiracionAsistida import *
+from ui.UIGraficas import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -45,6 +46,12 @@ class Ui_MainWindow(object):
         self.uiRespiracionAsistida = Ui_RespiracionAsistida()
         self.uiRespiracionAsistida.setupUi(self.form3)
 	#objeto de clase Ui_RespiracionAsistida
+
+	#objeto de clase Ui_Graficas
+        self.form4 = QtWidgets.QWidget()
+        self.uiGraficas = Ui_Graficas()
+        self.uiGraficas.setupUi(self.form4)
+	#objeto de clase Ui_Graficas
 
 
         #self.widget = QtWidgets.QWidget(self.centralwidget)
@@ -95,6 +102,7 @@ class Ui_MainWindow(object):
         self.uiPrincipal.btnVentControlada.clicked.connect(self.gotoUIRespiracionControlada)
         self.uiPrincipal.btnVentAsistida.clicked.connect(self.gotoUIRespiracionAsistida)
         self.btnRegresar.clicked.connect(self.gotoUIPrincipal)
+        self.btnContinuar.clicked.connect(self.gotoUIGraficas)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -130,23 +138,27 @@ class Ui_MainWindow(object):
         #self.horizontalLayout.addWidget(self.Form, self.Form2)
         #objeto de clase Ui_Principal
 
+
     def gotoUIPrincipal(self):
-        #self.uiPrincipal.pushButton.setText("Acabas de hacer clic en el boton!")
         self.verticalLayout.removeWidget(self.form2)
-        #self.verticalLayout.update()
         self.form2.setParent(None)
         self.verticalLayout.removeWidget(self.form3)
-        #self.verticalLayout.update()
         self.form3.setParent(None)
-	#objeto de clase Ui_Principal
-        #self.form = QtWidgets.QWidget()
-        #self.uiPrincipal = Ui_Principal()
-        #self.uiPrincipal.setupUi(self.form)
         self.verticalLayout.addWidget(self.form)
-        #self.horizontalLayout.addWidget(self.Form, self.Form2)
-        #objeto de clase Ui_Principal
 
-
+    def gotoUIGraficas(self):
+        self.verticalLayout.removeWidget(self.form)
+        self.form.setParent(None)
+        self.verticalLayout.update()
+        self.verticalLayout.removeWidget(self.form2)
+        self.form2.setParent(None)
+        self.verticalLayout.removeWidget(self.form3)
+        self.form3.setParent(None)
+        #self.centralwidget.repaint()
+        #self.form4.setParent(self.centralwidget)
+        self.verticalLayout.addWidget(self.form4)
+        self.centralwidget.update()
+        
 
 if __name__ == "__main__":
     import sys
