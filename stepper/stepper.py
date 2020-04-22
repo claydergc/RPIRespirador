@@ -46,3 +46,13 @@ class StepperMotor:
         pasos = round(theta/0.05625, 0)
         self.run(int(pasos),self.direccionRotacion(theta))
         return pasos*0.05625
+
+    def cerrar(self, theta): #resolucion del motor
+        pasos = round(theta/0.05625, 0)
+        self.run(int(pasos),1) #cerrar=1 con engranes. con faja el 1 seria 0
+        return pasos*0.05625
+
+    def abrir(self, theta): #resolucion del motor
+        pasos = round(theta/0.05625, 0)
+        self.run(int(pasos),0) #abrir=0 con engranes. con faja el 0 seria 1
+        return pasos*0.05625
