@@ -25,11 +25,11 @@ class Ui_MainWindow(object):
         self.form = QtWidgets.QWidget()
         self.uiPrincipal = Ui_Principal()
         self.uiPrincipal.setupUi(self.form)
-        #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        #sizePolicy.setHorizontalStretch(0)
-        #sizePolicy.setVerticalStretch(0)
-        #sizePolicy.setHeightForWidth(self.form.sizePolicy().hasHeightForWidth())
-        #self.form.setSizePolicy(sizePolicy)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.form.sizePolicy().hasHeightForWidth())
+        self.form.setSizePolicy(sizePolicy)
         self.verticalLayout.addWidget(self.form)
         #objeto de clase Ui_Principal
 
