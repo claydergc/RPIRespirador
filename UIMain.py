@@ -13,6 +13,15 @@ from ui.UIRespiracionAsistida import *
 from ui.UIGraficas import *
 
 class Ui_MainWindow(object):
+
+    PANT_INICIAL = 0
+    PANT_RESP_CONTROLADA = 1
+    PANT_RESP_ASISTIDA = 2 
+    PANT_AJUSTES = 3
+    PANT_GRAFICAS = 4
+    pantallaActual = PANT_INICIAL
+    pantallaAnterior = PANT_INICIAL
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 420)
@@ -101,8 +110,11 @@ class Ui_MainWindow(object):
 
         self.uiPrincipal.btnVentControlada.clicked.connect(self.gotoUIRespiracionControlada)
         self.uiPrincipal.btnVentAsistida.clicked.connect(self.gotoUIRespiracionAsistida)
-        self.btnRegresar.clicked.connect(self.gotoUIPrincipal)
-        self.btnContinuar.clicked.connect(self.gotoUIGraficas)
+        #self.btnRegresar.clicked.connect(self.gotoUIPrincipal)
+        self.btnRegresar.clicked.connect(self.eventBtnRegresar)        
+        #self.btnContinuar.clicked.connect(self.gotoUIGraficas)
+        self.btnContinuar.clicked.connect(self.eventBtnContinuar)
+        self.actualizarBotones()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -110,54 +122,84 @@ class Ui_MainWindow(object):
         self.btnContinuar.setText(_translate("MainWindow", "Continuar"))
         self.btnRegresar.setText(_translate("MainWindow", "Regresar"))
 
-    def gotoUIRespiracionControlada(self):
-        #self.uiPrincipal.pushButton.setText("Acabas de hacer clic en el boton!")
-        self.verticalLayout.removeWidget(self.form)
-        self.verticalLayout.update()
-        self.form.setParent(None)
-	#objeto de clase Ui_Principal
-        #self.form2 = QtWidgets.QWidget()
-        #self.uiRespiracionControlada = Ui_RespiracionControlada()
-        #self.uiRespiracionControlada.setupUi(self.form2)
-        #self.form2.setParent(self)        
-        self.verticalLayout.addWidget(self.form2)
-        #self.horizontalLayout.addWidget(self.Form, self.Form2)
-        #objeto de clase Ui_Principal
+    def actualizarBotones(self):
+        if self.pantallaActual == self.PANT_INICIAL:
+            self.btnRegresar.setVisible(False)
+            self.btnContinuar.setVisible(False)
+        elif self.pantallaActual == self.PANT_RESP_CONTROLADA:
+            self.btnRegresar.setVisible(True)
+            self.btnContinuar.setVisible(True)
+        elif self.pantallaActual == self.PANT_RESP_ASISTIDA:
+            self.btnRegresar.setVisible(True)
+            self.btnContinuar.setVisible(True)
+        elif self.pantallaActual == self.PANT_AJUSTES:
+            self.btnRegresar.setVisible(True)
+            self.btnContinuar.setVisible(False)
+        elif self.pantallaActual == self.PANT_GRAFICAS:
+            self.btnRegresar.setVisible(True)
+            self.btnContinuar.setVisible(False)
 
-    def gotoUIRespiracionAsistida(self):
-        #self.uiPrincipal.pushButton.setText("Acabas de hacer clic en el boton!")
-        self.verticalLayout.removeWidget(self.form)
-        self.verticalLayout.update()
-        self.form.setParent(None)
-	#objeto de clase Ui_Principal
-        #self.form2 = QtWidgets.QWidget()
-        #self.uiRespiracionControlada = Ui_RespiracionControlada()
-        #self.uiRespiracionControlada.setupUi(self.form2)
-        #self.form2.setParent(self)        
-        self.verticalLayout.addWidget(self.form3)
-        #self.horizontalLayout.addWidget(self.Form, self.Form2)
-        #objeto de clase Ui_Principal
+    def eventBtnRegresar(self):
+        if self.pantallaActual == self.PANT_RESP_CONTROLADA:
+            self.gotoUIPrincipal()
+        elif self.pantallaActual == self.PANT_RESP_ASISTIDA:
+            self.gotoUIPrincipal()
+        elif self.pantallaActual == self.PANT_GRAFICAS:
+            if self.pantallaAnterior == self.PANT_RESP_CONTROLADA:
+                self.gotoUIRespiracionControlada()
+            elif self.pantallaAnterior == self.PANT_RESP_ASISTIDA:
+                self.gotoUIRespiracionAsistida()
 
+    def eventBtnContinuar(self):
+        if self.pantallaActual == self.PANT_RESP_CONTROLADA:
+            self.pantallaAnterior = self.PANT_RESP_CONTROLADA
+        elif self.pantallaActual == self.PANT_RESP_ASISTIDA:
+            self.pantallaAnterior = self.PANT_RESP_ASISTIDA
+        self.gotoUIGraficas()
 
     def gotoUIPrincipal(self):
         self.verticalLayout.removeWidget(self.form2)
         self.form2.setParent(None)
         self.verticalLayout.removeWidget(self.form3)
         self.form3.setParent(None)
+        self.verticalLayout.removeWidget(self.form4)
+        self.form4.setParent(None)
         self.verticalLayout.addWidget(self.form)
+        self.pantallaActual = self.PANT_INICIAL
+        self.actualizarBotones()
+
+    def gotoUIRespiracionControlada(self):        
+        self.verticalLayout.removeWidget(self.form)
+        self.form.setParent(None)
+        self.verticalLayout.removeWidget(self.form3)
+        self.form3.setParent(None)
+        self.verticalLayout.removeWidget(self.form4)
+        self.form4.setParent(None)
+        self.verticalLayout.addWidget(self.form2)
+        self.pantallaActual = self.PANT_RESP_CONTROLADA
+        self.actualizarBotones()	
+
+    def gotoUIRespiracionAsistida(self):     
+        self.verticalLayout.removeWidget(self.form)
+        self.form.setParent(None)
+        self.verticalLayout.removeWidget(self.form2)
+        self.form2.setParent(None)        
+        self.verticalLayout.removeWidget(self.form4)
+        self.form4.setParent(None)
+        self.verticalLayout.addWidget(self.form3)        
+        self.pantallaActual = self.PANT_RESP_ASISTIDA
+        self.actualizarBotones()	
 
     def gotoUIGraficas(self):
         self.verticalLayout.removeWidget(self.form)
         self.form.setParent(None)
-        self.verticalLayout.update()
         self.verticalLayout.removeWidget(self.form2)
         self.form2.setParent(None)
         self.verticalLayout.removeWidget(self.form3)
-        self.form3.setParent(None)
-        #self.centralwidget.repaint()
-        #self.form4.setParent(self.centralwidget)
+        self.form3.setParent(None)        
         self.verticalLayout.addWidget(self.form4)
-        self.centralwidget.update()
+        self.pantallaActual = self.PANT_GRAFICAS
+        self.actualizarBotones()	
         
 
 if __name__ == "__main__":
