@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
 
         #objeto de clase Ui_Principal
-        self.form = QtWidgets.QWidget()
+        self.form = QtWidgets.QWidget(self.centralwidget)
         self.uiPrincipal = Ui_Principal()
         self.uiPrincipal.setupUi(self.form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -34,20 +34,21 @@ class Ui_MainWindow(object):
         #objeto de clase Ui_Principal
 
         #objeto de clase Ui_RespiracionControlada
-        self.form2 = QtWidgets.QWidget()
+        self.form2 = QtWidgets.QWidget(self.centralwidget)
         self.uiRespiracionControlada = Ui_RespiracionControlada()
         self.uiRespiracionControlada.setupUi(self.form2)
 	#objeto de clase Ui_RespiracionControlada
 
 
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        self.widget.setSizePolicy(sizePolicy)
-        self.widget.setObjectName("widget")
-        self.verticalLayout.addWidget(self.widget)
+        #self.widget = QtWidgets.QWidget(self.centralwidget)
+        #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        #sizePolicy.setHorizontalStretch(0)
+        #sizePolicy.setVerticalStretch(0)
+        #sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
+        #self.widget.setSizePolicy(sizePolicy)
+        #self.widget.setObjectName("widget")
+        #self.verticalLayout.addWidget(self.widget)
+        
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
