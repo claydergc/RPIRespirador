@@ -35,16 +35,14 @@ class StepperMotor:
             sleep(self.delay)
 
     def direccionRotacion(self, theta):
-	if theta > 0:
-	   return 1
-	else:
-	   return 0
+        if theta > 0:
+           return 1
+        else:
+           return 0
 
     #1 micropaso 1/32 = 0.05625 grados. 1.8/32
     def girar(self, theta): #resolucion del motor
 	#GPIO.output(self.dir_pin, self.direccionRotacion(theta))
-	pasos = round(theta/0.05625, 0)
-	self.run(int(pasos),self.direccionRotacion(theta))
-
-	return pasos*0.05625
-
+        pasos = round(theta/0.05625, 0)
+        self.run(int(pasos),self.direccionRotacion(theta))
+        return pasos*0.05625
