@@ -24,5 +24,6 @@ f= open("./data.txt","r+") #abrir archivo para lectura y escritura
 
 theta1 = motor.girar(theta0) # angulo al que se llega si el numero de pasos calculados no es entero
 sleep(0.5)
-f.write("%f\n" % theta1) #se guarda el angulo en el arhivo data.txt
+#f.write("%f\n" % theta1) #se guarda el angulo en el arhivo data.txt
+f.write("%f" % theta1) #se guarda el angulo en el arhivo data.txt
 f.close() 

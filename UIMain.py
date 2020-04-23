@@ -11,6 +11,8 @@ from ui.UIPrincipal import *
 from ui.UIRespiracionControlada import *
 from ui.UIRespiracionAsistida import *
 from ui.UIGraficas import *
+from ui.UIAjustes import *
+from ui.UIMaxMinParametros import *
 
 class Ui_MainWindow(object):
 
@@ -19,6 +21,8 @@ class Ui_MainWindow(object):
     PANT_RESP_ASISTIDA = 2 
     PANT_AJUSTES = 3
     PANT_GRAFICAS = 4
+    PANT_AJUSTES = 5
+    PANT_MAXMINPARAMETROS = 6
     pantallaActual = PANT_INICIAL
     pantallaAnterior = PANT_INICIAL
 
@@ -62,6 +66,17 @@ class Ui_MainWindow(object):
         self.uiGraficas.setupUi(self.form4)
 	#objeto de clase Ui_Graficas
 
+	#objeto de clase Ui_Graficas
+        self.form5 = QtWidgets.QWidget()
+        self.uiAjustes = Ui_Ajustes()
+        self.uiAjustes.setupUi(self.form5)
+	#objeto de clase Ui_Graficas
+
+	#objeto de clase Ui_Graficas
+        self.form6 = QtWidgets.QWidget()
+        self.uiMaxMinParametros = Ui_MaxMinParametros()
+        self.uiMaxMinParametros.setupUi(self.form6)
+	#objeto de clase Ui_Graficas
 
         #self.widget = QtWidgets.QWidget(self.centralwidget)
         #sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -110,6 +125,7 @@ class Ui_MainWindow(object):
 
         self.uiPrincipal.btnVentControlada.clicked.connect(self.gotoUIRespiracionControlada)
         self.uiPrincipal.btnVentAsistida.clicked.connect(self.gotoUIRespiracionAsistida)
+        self.uiPrincipal.btnAjustes.clicked.connect(self.gotoUIAjustes)
         #self.btnRegresar.clicked.connect(self.gotoUIPrincipal)
         self.btnRegresar.clicked.connect(self.eventBtnRegresar)        
         #self.btnContinuar.clicked.connect(self.gotoUIGraficas)
@@ -123,6 +139,9 @@ class Ui_MainWindow(object):
         self.btnRegresar.setText(_translate("MainWindow", "Regresar"))
 
     def actualizarBotones(self):
+        self.btnContinuar.setText("Continuar")
+        self.btnRegresar.setText("Regresar")
+
         if self.pantallaActual == self.PANT_INICIAL:
             self.btnRegresar.setVisible(False)
             self.btnContinuar.setVisible(False)
@@ -134,28 +153,50 @@ class Ui_MainWindow(object):
             self.btnContinuar.setVisible(True)
         elif self.pantallaActual == self.PANT_AJUSTES:
             self.btnRegresar.setVisible(True)
-            self.btnContinuar.setVisible(False)
+            self.btnContinuar.setVisible(True)
         elif self.pantallaActual == self.PANT_GRAFICAS:
             self.btnRegresar.setVisible(True)
             self.btnContinuar.setVisible(False)
-
+        elif self.pantallaActual == self.PANT_MAXMINPARAMETROS:
+            self.btnRegresar.setText("Regresar a Menu Principal")
+            self.btnRegresar.setVisible(True)
+            self.btnContinuar.setText("Guardar Parametros")
+            self.btnContinuar.setVisible(True)
+            
     def eventBtnRegresar(self):
         if self.pantallaActual == self.PANT_RESP_CONTROLADA:
             self.gotoUIPrincipal()
         elif self.pantallaActual == self.PANT_RESP_ASISTIDA:
+            self.gotoUIPrincipal()
+        elif self.pantallaActual == self.PANT_AJUSTES:
             self.gotoUIPrincipal()
         elif self.pantallaActual == self.PANT_GRAFICAS:
             if self.pantallaAnterior == self.PANT_RESP_CONTROLADA:
                 self.gotoUIRespiracionControlada()
             elif self.pantallaAnterior == self.PANT_RESP_ASISTIDA:
                 self.gotoUIRespiracionAsistida()
+        elif self.pantallaActual == self.PANT_MAXMINPARAMETROS:
+            self.gotoUIPrincipal()
 
     def eventBtnContinuar(self):
         if self.pantallaActual == self.PANT_RESP_CONTROLADA:
             self.pantallaAnterior = self.PANT_RESP_CONTROLADA
+            self.gotoUIGraficas()
         elif self.pantallaActual == self.PANT_RESP_ASISTIDA:
             self.pantallaAnterior = self.PANT_RESP_ASISTIDA
-        self.gotoUIGraficas()
+            self.gotoUIGraficas()
+        elif self.pantallaActual == self.PANT_AJUSTES:
+            if self.uiAjustes.txtPassword.text() == self.uiAjustes.PASSWORD:
+                self.gotoUIMaxMinParametros()
+        elif self.pantallaActual == self.PANT_MAXMINPARAMETROS:
+            f = open("./max_min_data.txt","w") #abrir archivo para lectura y escritura
+            #se guardan los maximos y minimos en el arhivo data.txt
+            f.write("%d\n%d\n" % (self.uiMaxMinParametros.spinFrecRespMax.value(), self.uiMaxMinParametros.spinFrecRespMin.value()) )
+            f.write("%d\n%d\n" % (self.uiMaxMinParametros.spinVolTidalMax.value(), self.uiMaxMinParametros.spinVolTidalMin.value()) )
+            f.write("%d\n%d\n" % (self.uiMaxMinParametros.spinRelIEMax.value(), self.uiMaxMinParametros.spinRelIEMin.value()) )
+            f.write("%d\n%d\n" % (self.uiMaxMinParametros.spinSensMax.value(), self.uiMaxMinParametros.spinSensMin.value()) )
+            f.write("%d\n%d" % (self.uiMaxMinParametros.spinOxiMax.value(), self.uiMaxMinParametros.spinOxiMin.value()) )
+            f.close()
 
     def gotoUIPrincipal(self):
         self.verticalLayout.removeWidget(self.form2)
@@ -164,6 +205,10 @@ class Ui_MainWindow(object):
         self.form3.setParent(None)
         self.verticalLayout.removeWidget(self.form4)
         self.form4.setParent(None)
+        self.verticalLayout.removeWidget(self.form5)
+        self.form5.setParent(None)
+        self.verticalLayout.removeWidget(self.form6)
+        self.form6.setParent(None)
         self.verticalLayout.addWidget(self.form)
         self.pantallaActual = self.PANT_INICIAL
         self.actualizarBotones()
@@ -175,6 +220,11 @@ class Ui_MainWindow(object):
         self.form3.setParent(None)
         self.verticalLayout.removeWidget(self.form4)
         self.form4.setParent(None)
+        self.verticalLayout.removeWidget(self.form5)
+        self.form5.setParent(None)
+        self.verticalLayout.removeWidget(self.form6)
+        self.form6.setParent(None)
+        self.uiRespiracionControlada.actualizarParametros()
         self.verticalLayout.addWidget(self.form2)
         self.pantallaActual = self.PANT_RESP_CONTROLADA
         self.actualizarBotones()	
@@ -186,6 +236,10 @@ class Ui_MainWindow(object):
         self.form2.setParent(None)        
         self.verticalLayout.removeWidget(self.form4)
         self.form4.setParent(None)
+        self.verticalLayout.removeWidget(self.form5)
+        self.form5.setParent(None)
+        self.verticalLayout.removeWidget(self.form6)
+        self.form6.setParent(None)
         self.verticalLayout.addWidget(self.form3)        
         self.pantallaActual = self.PANT_RESP_ASISTIDA
         self.actualizarBotones()	
@@ -196,9 +250,43 @@ class Ui_MainWindow(object):
         self.verticalLayout.removeWidget(self.form2)
         self.form2.setParent(None)
         self.verticalLayout.removeWidget(self.form3)
-        self.form3.setParent(None)        
+        self.form3.setParent(None)
+        self.verticalLayout.removeWidget(self.form5)
+        self.form5.setParent(None)
+        self.verticalLayout.removeWidget(self.form6)
+        self.form6.setParent(None)
         self.verticalLayout.addWidget(self.form4)
         self.pantallaActual = self.PANT_GRAFICAS
+        self.actualizarBotones()
+
+    def gotoUIAjustes(self):
+        self.verticalLayout.removeWidget(self.form)
+        self.form.setParent(None)
+        self.verticalLayout.removeWidget(self.form2)
+        self.form2.setParent(None)
+        self.verticalLayout.removeWidget(self.form3)
+        self.form3.setParent(None)        
+        self.verticalLayout.removeWidget(self.form4)
+        self.form4.setParent(None)
+        self.verticalLayout.removeWidget(self.form6)
+        self.form6.setParent(None)
+        self.verticalLayout.addWidget(self.form5)
+        self.pantallaActual = self.PANT_AJUSTES
+        self.actualizarBotones()
+
+    def gotoUIMaxMinParametros(self):
+        self.verticalLayout.removeWidget(self.form)
+        self.form.setParent(None)
+        self.verticalLayout.removeWidget(self.form2)
+        self.form2.setParent(None)
+        self.verticalLayout.removeWidget(self.form3)
+        self.form3.setParent(None)        
+        self.verticalLayout.removeWidget(self.form4)
+        self.form4.setParent(None)
+        self.verticalLayout.removeWidget(self.form5)
+        self.form5.setParent(None)
+        self.verticalLayout.addWidget(self.form6)
+        self.pantallaActual = self.PANT_MAXMINPARAMETROS
         self.actualizarBotones()	
         
 

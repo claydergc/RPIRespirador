@@ -38,7 +38,6 @@ class Ui_RespiracionControlada(object):
         #self.sldFrecRespiratoria = QtWidgets.QSlider(RespiracionControlada)
         #self.sldFrecRespiratoria.setOrientation(QtCore.Qt.Vertical)
         #self.sldFrecRespiratoria.setObjectName("sldFrecRespiratoria")
-        
 
         self.sldFrecRespiratoria = QtWidgets.QSlider(RespiracionControlada)
         self.sldFrecRespiratoria.setOrientation(QtCore.Qt.Vertical)
@@ -317,6 +316,41 @@ class Ui_RespiracionControlada(object):
         self.retranslateUi(RespiracionControlada)
         QtCore.QMetaObject.connectSlotsByName(RespiracionControlada)
 
+        f = open("./max_min_data.txt","r") #abrir archivo para lectura y escritura
+        lines = f.readlines()
+        
+        if len(lines)==10:
+            self.sldFrecRespiratoria.setMaximum(int(lines[0]))
+            self.sldFrecRespiratoria.setMinimum(int(lines[1]))
+            self.label_4.setText(lines[0].strip() + " vpm")
+            self.label_2.setText(lines[1].strip() + " vpm")
+            self.sldFrecRespiratoria.setValue(int(lines[1]))
+
+            self.sldVolumenTidal.setMaximum(int(lines[2]))
+            self.sldVolumenTidal.setMinimum(int(lines[3]))
+            self.label_6.setText(lines[2].strip() + " ml")
+            self.label_8.setText(lines[3].strip() + " ml")
+            self.sldVolumenTidal.setValue(int(lines[3]))
+            
+            self.sldRelacionIE.setMaximum(int(lines[4]))
+            self.sldRelacionIE.setMinimum(int(lines[5]))
+            self.label_10.setText("1:" + lines[4].strip())
+            self.label_12.setText("1:" + lines[5].strip())
+            self.sldRelacionIE.setValue(int(lines[5]))
+
+            self.sldSensibilidad.setMaximum(int(lines[6]))
+            self.sldSensibilidad.setMinimum(int(lines[7]))
+            self.label_14.setText(lines[6].strip() + " cm")
+            self.label_16.setText(lines[7].strip() + " cm")
+            self.sldSensibilidad.setValue(int(lines[7]))
+
+            self.sldOxigeno.setMaximum(int(lines[8]))
+            self.sldOxigeno.setMinimum(int(lines[9]))
+            self.label_18.setText(lines[8].strip() + "%")
+            self.label_20.setText(lines[9].strip() + "%")
+            self.sldOxigeno.setValue(int(lines[9]))
+        f.close()
+
     def retranslateUi(self, RespiracionControlada):
         _translate = QtCore.QCoreApplication.translate
         RespiracionControlada.setWindowTitle(_translate("RespiracionControlada", "Form"))
@@ -332,9 +366,9 @@ class Ui_RespiracionControlada(object):
         self.lblSensibilidad.setText(_translate("RespiracionControlada", "Sens.:   "))
         self.label_14.setText(_translate("RespiracionControlada", "5 cm"))
         self.label_16.setText(_translate("RespiracionControlada", "1 cm"))
-        self.lblOxigeno.setText(_translate("RespiracionControlada", "% Oxi.:   "))
-        self.label_18.setText(_translate("RespiracionControlada", "100 %"))
-        self.label_20.setText(_translate("RespiracionControlada", "0 %"))
+        self.lblOxigeno.setText(_translate("RespiracionControlada", "%Oxi.:   "))
+        self.label_18.setText(_translate("RespiracionControlada", "100%"))
+        self.label_20.setText(_translate("RespiracionControlada", "0%"))
 
     def sldFrecRespiratoriaValueChanged(self):
     	self.lblFrecRespiratoria.setText( "Frec. Resp.: " + str(self.sldFrecRespiratoria.value()) )
@@ -349,7 +383,43 @@ class Ui_RespiracionControlada(object):
     	self.lblSensibilidad.setText( "Sens.: " + str(self.sldSensibilidad.value()) )
 
     def sldOxigenoValueChanged(self):
-    	self.lblOxigeno.setText( "Oxi: " + str(self.sldOxigeno.value()) ) 
+    	self.lblOxigeno.setText( "%Oxi: " + str(self.sldOxigeno.value()) )
+
+    def actualizarParametros(self):
+        f = open("./max_min_data.txt","r") #abrir archivo para lectura y escritura
+        lines = f.readlines()
+        
+        if len(lines)==10:
+            self.sldFrecRespiratoria.setMaximum(int(lines[0]))
+            self.sldFrecRespiratoria.setMinimum(int(lines[1]))
+            self.label_4.setText(lines[0].strip() + " vpm")
+            self.label_2.setText(lines[1].strip() + " vpm")
+            self.sldFrecRespiratoria.setValue(int(lines[1]))
+
+            self.sldVolumenTidal.setMaximum(int(lines[2]))
+            self.sldVolumenTidal.setMinimum(int(lines[3]))
+            self.label_6.setText(lines[2].strip() + " ml")
+            self.label_8.setText(lines[3].strip() + " ml")
+            self.sldVolumenTidal.setValue(int(lines[3]))
+            
+            self.sldRelacionIE.setMaximum(int(lines[4]))
+            self.sldRelacionIE.setMinimum(int(lines[5]))
+            self.label_10.setText("1:" + lines[4].strip())
+            self.label_12.setText("1:" + lines[5].strip())
+            self.sldRelacionIE.setValue(int(lines[5]))
+
+            self.sldSensibilidad.setMaximum(int(lines[6]))
+            self.sldSensibilidad.setMinimum(int(lines[7]))
+            self.label_14.setText(lines[6].strip() + " cm")
+            self.label_16.setText(lines[7].strip() + " cm")
+            self.sldSensibilidad.setValue(int(lines[7]))
+
+            self.sldOxigeno.setMaximum(int(lines[8]))
+            self.sldOxigeno.setMinimum(int(lines[9]))
+            self.label_18.setText(lines[8].strip() + "%")
+            self.label_20.setText(lines[9].strip() + "%")
+            self.sldOxigeno.setValue(int(lines[9]))
+        f.close()
 
 
 if __name__ == "__main__":
