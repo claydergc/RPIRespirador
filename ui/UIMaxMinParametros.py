@@ -298,6 +298,12 @@ class Ui_MaxMinParametros(object):
         self.retranslateUi(MaxMinParametros)
         QtCore.QMetaObject.connectSlotsByName(MaxMinParametros)
 
+        self.spinFrecRespMax.setMaximum(120)
+        self.spinVolTidalMax.setMaximum(1000)
+        self.spinRelIEMax.setMaximum(10)
+        self.spinSensMax.setMaximum(20)
+        self.spinOxiMax.setMaximum(100)
+        
         f = open("./max_min_data.txt","r") #abrir archivo para lectura y escritura
         lines = f.readlines()
         

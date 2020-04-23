@@ -240,6 +240,7 @@ class Ui_MainWindow(object):
         self.form5.setParent(None)
         self.verticalLayout.removeWidget(self.form6)
         self.form6.setParent(None)
+        self.uiRespiracionAsistida.actualizarParametros()
         self.verticalLayout.addWidget(self.form3)        
         self.pantallaActual = self.PANT_RESP_ASISTIDA
         self.actualizarBotones()	

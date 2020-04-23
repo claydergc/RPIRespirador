@@ -108,6 +108,28 @@ class Ui_RespiracionAsistida(object):
         self.retranslateUi(RespiracionAsistida)
         QtCore.QMetaObject.connectSlotsByName(RespiracionAsistida)
 
+        f = open("./max_min_data.txt","r") #abrir archivo para lectura y escritura
+        lines = f.readlines()
+
+        if len(lines)==10:
+            self.sldVolumenTidal.setMaximum(int(lines[2]))
+            self.sldVolumenTidal.setMinimum(int(lines[3]))
+            self.label_6.setText(lines[2].strip() + " ml")
+            self.label_8.setText(lines[3].strip() + " ml")
+            self.sldVolumenTidal.setValue(int(lines[3]))
+
+    def actualizarParametros(self):
+        f = open("./max_min_data.txt","r") #abrir archivo para lectura y escritura
+        lines = f.readlines()
+
+        if len(lines)==10:
+            self.sldVolumenTidal.setMaximum(int(lines[2]))
+            self.sldVolumenTidal.setMinimum(int(lines[3]))
+            self.label_6.setText(lines[2].strip() + " ml")
+            self.label_8.setText(lines[3].strip() + " ml")
+            self.sldVolumenTidal.setValue(int(lines[3]))
+
+
     def retranslateUi(self, RespiracionAsistida):
         _translate = QtCore.QCoreApplication.translate
         RespiracionAsistida.setWindowTitle(_translate("RespiracionAsistida", "Form"))
