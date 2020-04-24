@@ -40,6 +40,12 @@ class Ui_Principal(object):
         self.btnVentControlada.setIconSize(QtCore.QSize(16, 16))
         self.btnVentControlada.setObjectName("btnVentControlada")
         self.gridLayout.addWidget(self.btnVentControlada, 0, 0, 1, 1)
+        self.btnCalibrar = QtWidgets.QPushButton(Principal)
+        font = QtGui.QFont()
+        font.setPointSize(24)
+        self.btnCalibrar.setFont(font)
+        self.btnCalibrar.setObjectName("btnCalibrar")
+        self.gridLayout.addWidget(self.btnCalibrar, 3, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
 
         self.retranslateUi(Principal)
@@ -51,6 +57,7 @@ class Ui_Principal(object):
         self.btnAjustes.setText(_translate("Principal", "Ajustes"))
         self.btnVentAsistida.setText(_translate("Principal", "Ventilación Asistida"))
         self.btnVentControlada.setText(_translate("Principal", "Ventilación Controlada"))
+        self.btnCalibrar.setText(_translate("Principal", "Calibrar"))
 
 
 if __name__ == "__main__":
