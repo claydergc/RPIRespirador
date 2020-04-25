@@ -1,5 +1,7 @@
 from stepper.stepper import StepperMotor
+from sensores.caudalimetro import Caudalimetro
 from time import sleep
+from time import time
 
 # GPIO setup
 step_pin = 24
@@ -19,15 +21,14 @@ tiempoAnterior = float(time())
 
 sumTheta = 0.0
 while sumTheta < 1619.0:
-    deltaTheta = motor.cerrar(0.05625)
-    sleep(0.9996875)# = 1-((0.005/32)*2). ((0.005/32)*2) es el tiempo aproximado de la funcion motor.cerrar()
-
-    if( float(time()) - tiempoAnterior > 0.1):        
-        caudal = 0.1 * caudalimetro.contadorPulsos/caudalimetro.factorConversion
-        caudalimetro.contadorPulsos = 0
-        tiempoAnterior = float(time())
-
+    t0 = time()
+    #deltaTheta = motor.cerrar(0.05625) #quizas paso muy pequeño
+    deltaTheta = motor.cerrar(1.8)
+    #sleep(0.25) #verificar cuanto delay necesito para generar un minimo de pulsaciones por unidad de tiempo
+    t1 = time()
+    caudal = (t1-t0) * caudalimetro.contadorPulsos/caudalimetro.factorConversion
     sumTheta += deltaTheta
     f.write("%f %f\n" % (sumTheta,caudal)) #no se considera este tiempo, sin embargo, podría ser importante.
+    caudalimetro.contadorPulsos = 0
 
 f.close() 
