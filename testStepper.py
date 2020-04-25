@@ -7,13 +7,14 @@ dir_pin = 22
 mode_pins = (36, 32, 26)
 
 # Stepper motor setup
-step_type = '1/32'
+#step_type = '1/32'
+step_type = 'Full'
 
 # create object
 motor = StepperMotor(step_pin, dir_pin, mode_pins, step_type)
 
 theta0 = 90 #angulo a mover en el motor
-f= open("./data.txt","r+") #abrir archivo para lectura y escritura
+f= open("./angles_data.txt","r+") #abrir archivo para lectura y escritura
 
 
 #motor.enable(True)        # enables stepper driver

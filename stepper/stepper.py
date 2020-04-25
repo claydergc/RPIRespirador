@@ -43,16 +43,20 @@ class StepperMotor:
     #1 micropaso 1/32 = 0.05625 grados. 1.8/32
     def girar(self, theta): #resolucion del motor
 	#GPIO.output(self.dir_pin, self.direccionRotacion(theta))
-        pasos = round(theta/0.05625, 0)
+        #pasos = round(theta/0.05625, 0)
+        pasos = round(theta/(1.8/microsteps[step_type]), 0)
         self.run(int(pasos),self.direccionRotacion(theta))
-        return pasos*0.05625
+        #return pasos*0.05625
+        return pasos*(1.8/microsteps[step_type])
 
     def cerrar(self, theta): #resolucion del motor
-        pasos = round(theta/0.05625, 0)
+        pasos = round(theta/(1.8/microsteps[step_type]), 0)
         self.run(int(pasos),1) #cerrar=1 con engranes. con faja el 1 seria 0
-        return pasos*0.05625
+        #return pasos*0.05625
+        return pasos*(1.8/microsteps[step_type])
 
     def abrir(self, theta): #resolucion del motor
-        pasos = round(theta/0.05625, 0)
+        pasos = round(theta/(1.8/microsteps[step_type]), 0)
         self.run(int(pasos),0) #abrir=0 con engranes. con faja el 0 seria 1
-        return pasos*0.05625
+        #return pasos*0.05625
+        return pasos*(1.8/microsteps[step_type])
