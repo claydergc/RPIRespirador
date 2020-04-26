@@ -8,8 +8,8 @@ class Caudalimetro:
         self.sensor_pin = sensor_pin
         self.factorConversion = 5.5 #Hz. Para litros por minuto
         self.contadorPulsos = 0
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
+        #GPIO.setwarnings(False)
+        #GPIO.setmode(GPIO.BOARD)
         GPIO.setup(sensor_pin, GPIO.IN)
         GPIO.add_event_detect(sensor_pin, GPIO.FALLING, callback = self.contadorPulsosCallback)
         self.tiempoAnterior = float(time())

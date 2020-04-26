@@ -7,8 +7,8 @@ class StepperMotor:
         self.step_pin = step_pin
         self.dir_pin = dir_pin
         self.step_type = step_type
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BOARD)
+        #GPIO.setwarnings(False)
+        #GPIO.setmode(GPIO.BOARD)
         GPIO.setup(step_pin, GPIO.OUT)
         GPIO.setup(dir_pin, GPIO.OUT)
         GPIO.setup(mode_pins, GPIO.OUT)
