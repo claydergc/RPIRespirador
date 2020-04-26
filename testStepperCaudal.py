@@ -10,7 +10,7 @@ mode_pins = (36, 32, 26)
 
 # Stepper motor setup
 step_type = '1/32'
-caudal_pin = 11
+caudal_pin = 33
 
 # create object
 motor = StepperMotor(step_pin, dir_pin, mode_pins, step_type)
@@ -20,15 +20,19 @@ caudalimetro = Caudalimetro(caudal_pin)
 tiempoAnterior = float(time())
 
 sumTheta = 0.0
+
+#deltaTheta = motor.abrir(90)
+#sleep(0.5)
+
 while sumTheta < 1619.0:
     t0 = time()
     #deltaTheta = motor.cerrar(0.05625) #quizas paso muy pequeño
-    deltaTheta = motor.cerrar(1.8)
-    #sleep(0.25) #verificar cuanto delay necesito para generar un minimo de pulsaciones por unidad de tiempo
+    deltaTheta = motor.abrir(0.9)
+    sleep(0.25) #verificar cuanto delay necesito para generar un minimo de pulsaciones por unidad de tiempo
     t1 = time()
     caudal = (t1-t0) * caudalimetro.contadorPulsos/caudalimetro.factorConversion
     sumTheta += deltaTheta
     f.write("%f %f\n" % (sumTheta,caudal)) #no se considera este tiempo, sin embargo, podría ser importante.
     caudalimetro.contadorPulsos = 0
 
-f.close() 
+f.close()
