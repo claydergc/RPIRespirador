@@ -28,6 +28,6 @@ sumTheta = 0.0
 while sumTheta < 90.0:
     deltaTheta1 = motor1.abrir(0.45)
     sleep(0.01)
-    deltaTheta1 = motor1.abrir(0.45)
+    deltaTheta1 = motor2.abrir(0.45)
     sleep(0.01)
     sumTheta += 0.45
